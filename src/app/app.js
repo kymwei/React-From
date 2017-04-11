@@ -29,6 +29,21 @@ class MySelectChange extends React.Component {
             </select>
         );
     }
+}
+
+class MyOutputChange extends React.Component {
+    constructor(props) {
+        super(props);
+
+    }
+    render() {
+        return (
+            <div>
+                 <h3>Selected</h3>
+                 <p>Id: <b>{this.props.item.id}</b> Value: <b>{this.props.item.name}</b></p>
+            </div>
+        )
+    }
 
 }
 
@@ -36,9 +51,8 @@ class MakeModelDropdowns extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { data: [] };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = { data: [] ,value: {}, showOutput: false};
+        this.changeHandler = this.changeHandler.bind(this);
     }
 
     componentDidMount() {
@@ -47,30 +61,18 @@ class MakeModelDropdowns extends React.Component {
             .then(json => this.setState({ data: json }));
     }
 
-    handleChange(event) {
-        this.setState({value: event.target.value});
+    changeHandler(event) {
+        this.state.data.forEach(function(item) {
+            if (parseInt(item.id) === parseInt(event.target.value)) {
+                this.setState({ showOutput: item.id > 0 });
+                this.setState({ value : item});
+            }
+        }.bind(this));
     }
-
-    handleSubmit(event) {
-        alert('Your favorite flavor is: ' + this.state.value);
-        event.preventDefault();
-    }
-
     render() {
 
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Pick your favorite La Croix flavor:
-                    <select value={this.state.value} onChange={this.handleChange}>
-                        <option value="grapefruit">Grapefruit</option>
-                        <option value="lime">Lime</option>
-                        <option value="coconut">Coconut</option>
-                        <option value="mango">Mango</option>
-                    </select>
-                </label>
-                <input type="submit" value="Submit" />
-
+            <form >
                 <div onChange={this.changeHandler}>
                     {
                         this.state.data.length == 0
@@ -80,7 +82,6 @@ class MakeModelDropdowns extends React.Component {
                     }
                     { this.state.showOutput ? <MyOutputChange item={this.state.value}/> : null }
                 </div>
-
 
             </form>
         );
