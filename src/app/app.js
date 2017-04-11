@@ -52,7 +52,7 @@ class MakeModelDropdowns extends React.Component {
     constructor(props) {
         super(props);
         this.state = { data: [] ,value: {}, showOutput: false};
-        this.changeHandler = this.changeHandler.bind(this);
+        this._changeHandler = this._changeHandler.bind(this);
     }
 
     componentDidMount() {
@@ -61,7 +61,8 @@ class MakeModelDropdowns extends React.Component {
             .then(json => this.setState({ data: json }));
     }
 
-    changeHandler(event) {
+    _changeHandler(event) {
+        
         this.state.data.forEach(function(item) {
             if (parseInt(item.id) === parseInt(event.target.value)) {
                 this.setState({ showOutput: item.id > 0 });
@@ -73,7 +74,7 @@ class MakeModelDropdowns extends React.Component {
 
         return (
             <form >
-                <div onChange={this.changeHandler}>
+                <div onChange={this._changeHandler}>
                     {
                         this.state.data.length == 0
                             ? 'Loading data...'
