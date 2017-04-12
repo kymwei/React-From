@@ -1,2 +1,4 @@
 # React-From
-from component 
+load dropdown from ajax call
+using webpack 2
+

@@ -1,5 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+require('../style/base.scss');
+//require('../style/base.css');
+
+
 const root = document.getElementById("root");
 
 
@@ -14,10 +18,9 @@ class MySelectOptionsChange extends React.Component {
 class MySelectChange extends React.Component {
     constructor(props) {
         super(props);
-
     }
     render() {
-        var mySelectOptions = function(result) {
+        let mySelectOptions = function(result) {
             return <MySelectOptionsChange
                 key={result.id}
                 data={result} />
@@ -34,24 +37,32 @@ class MySelectChange extends React.Component {
 class MyOutputChange extends React.Component {
     constructor(props) {
         super(props);
-
     }
     render() {
         return (
             <div>
-                 <h3>Selected</h3>
-                 <p>Id: <b>{this.props.item.id}</b> Value: <b>{this.props.item.name}</b></p>
+                 <h3>Selected Make</h3>
+
+                {
+                    this.props.makeList.length == 0
+                        ? 'no thing selected...'
+                        : this.props.makeList.map(item => (
+                            <li>
+                            <input type="checkbox"  value={item.id} />
+                             <span> Id: <b>{item.id}</b> Name: <b>{item.name}</b></span>
+                            </li>
+                    ))
+                }
             </div>
         )
     }
-
 }
 
 class MakeModelDropdowns extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { data: [] ,value: {}, showOutput: false};
+        this.state = { data: [], list: [], showOutput: false};
         this._changeHandler = this._changeHandler.bind(this);
     }
 
@@ -62,29 +73,31 @@ class MakeModelDropdowns extends React.Component {
     }
 
     _changeHandler(event) {
-        
         this.state.data.forEach(function(item) {
             if (parseInt(item.id) === parseInt(event.target.value)) {
-                this.setState({ showOutput: item.id > 0 });
-                this.setState({ value : item});
+                this.setState({showOutput: !!item.id});
+                const newList = this.state.list.concat([item]);
+                this.setState({list: newList});
+
             }
         }.bind(this));
+
     }
     render() {
 
         return (
-            <form >
-                <div onChange={this._changeHandler}>
+            <div className="text-center">
+                <h1>Select Your Favorate Make</h1>
+                <div  className={this.state.style} onChange={this._changeHandler}>
                     {
                         this.state.data.length == 0
                             ? 'Loading data...'
-                            :  <MySelectChange data={this.state.data}  />
-
+                            :  <MySelectChange data={this.state.data} />
                     }
-                    { this.state.showOutput ? <MyOutputChange item={this.state.value}/> : null }
-                </div>
 
-            </form>
+                </div>
+                { this.state.showOutput ? <MyOutputChange makeList={this.state.list} /> : null }
+            </div>
         );
     }
 }

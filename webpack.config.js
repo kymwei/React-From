@@ -2,6 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 var debug = process.env.NODE_ENV !== "production";
 
+
+
 module.exports = {
     context: path.join(__dirname, "src"),
     entry: './app/app.js',
@@ -21,8 +23,11 @@ module.exports = {
                 //     plugins: ['transform-decorators-legacy', 'transform-class-properties'],
                 // }
             },
-            {   test: /\.css$/,
-                loader: "style-loader!css-loader"
+            {   test: /\.scss$/,
+                loaders: 'style-loader!css-loader!sass-loader'
+            },
+            {   test: /\.css/,
+                loaders: 'style-loader!css-loader'
             }
         ]
     },
