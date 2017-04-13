@@ -38,21 +38,37 @@ class MyOutputChange extends React.Component {
     constructor(props) {
         super(props);
     }
-    render() {
-        return (
-            <div>
-                 <h3>Selected Make</h3>
+    _clear (event) {
 
+        this.props.onClear();
+    }
+    _delete (event) {
+
+        this.props.onDelete();
+    }
+    _change (item) {
+
+        item.select = !item.select
+    }
+    render() {
+        debugger
+        return (
+            <div className="text-left">
+                 <h3>Selected Make <span className="selected-count">{this.props.makeList.length}</span></h3>
+                <ul className="make-list">
                 {
                     this.props.makeList.length == 0
                         ? 'no thing selected...'
                         : this.props.makeList.map(item => (
-                            <li>
+                            <li key={item.id} onChange={this._change.bind(this, item)}>
                             <input type="checkbox"  value={item.id} />
-                             <span> Id: <b>{item.id}</b> Name: <b>{item.name}</b></span>
+                             <span> {item.name}</span>
                             </li>
                     ))
                 }
+                </ul>
+                <button className="btn btn-secondary" href="#" onClick={this._clear.bind(this)}>Clear All</button>
+                <button className="btn btn-secondary" href="#" onClick={this._delete.bind(this, this.props.makeList)}>deleted Selected</button>
             </div>
         )
     }
@@ -83,7 +99,16 @@ class MakeModelDropdowns extends React.Component {
         }.bind(this));
 
     }
+    _onClear (data) {
+        this.setState({ list: [], showOutput: false })
+    }
+    _onDelete (makeList) {
+        debugger
+        var newList = this.state.list.filter(item => !item.select)
+        this.setState({ list: newList})
+    }
     render() {
+
 
         return (
             <div className="text-center">
@@ -96,7 +121,11 @@ class MakeModelDropdowns extends React.Component {
                     }
 
                 </div>
-                { this.state.showOutput ? <MyOutputChange makeList={this.state.list} /> : null }
+                {this.state.showOutput && <MyOutputChange makeList={this.state.list} onClear={this._onClear.bind(this)} onDelete={this._onDelete.bind(this)}/>
+
+                }
+
+
             </div>
         );
     }
