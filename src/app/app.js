@@ -51,10 +51,10 @@ class MyOutputChange extends React.Component {
         item.select = !item.select
     }
     render() {
-        debugger
+
         return (
             <div className="text-left">
-                 <h3>Selected Make <span className="selected-count">{this.props.makeList.length}</span></h3>
+                 <h3><span className="selected-count">{this.props.makeList.length}</span> Selected Make</h3>
                 <ul className="make-list">
                 {
                     this.props.makeList.length == 0
@@ -68,7 +68,7 @@ class MyOutputChange extends React.Component {
                 }
                 </ul>
                 <button className="btn btn-secondary" href="#" onClick={this._clear.bind(this)}>Clear All</button>
-                <button className="btn btn-secondary" href="#" onClick={this._delete.bind(this, this.props.makeList)}>deleted Selected</button>
+                <button className="btn btn-secondary" href="#" onClick={this._delete.bind(this, this.props.makeList)}>delete Selected</button>
             </div>
         )
     }
@@ -93,7 +93,14 @@ class MakeModelDropdowns extends React.Component {
             if (parseInt(item.id) === parseInt(event.target.value)) {
                 this.setState({showOutput: !!item.id});
                 const newList = this.state.list.concat([item]);
-                this.setState({list: newList});
+
+                console.log(newList);
+                const uniqueList = newList.filter((val, id, array) => {
+                    debugger
+                    return array.indexOf(val) == id;
+                });
+                //const uniqueNames = names.filter((val,id,array) => array.indexOf(val) == id);
+                this.setState({list: uniqueList});
 
             }
         }.bind(this));
@@ -112,7 +119,7 @@ class MakeModelDropdowns extends React.Component {
 
         return (
             <div className="text-center">
-                <h1>Select Your Favorate Make</h1>
+                <h1>Select Your Favorite Make</h1>
                 <div  className={this.state.style} onChange={this._changeHandler}>
                     {
                         this.state.data.length == 0

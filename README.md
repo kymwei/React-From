@@ -19,9 +19,19 @@ API https://api.myjson.com/bins/9fisb
 
 5. add clear all button to clean all selection
 
+6. more ? unmount everything?
+
 
 ####Bonus:
 - adding css3 to style as you like
 - adding more functions 
 - make it to responsive
 - do what ever you think very cool
+- if you still have time, adding test on your react compoment
+### Tip
+- conditional rendering
+- Using Lifecycle
+
+
+## to run the project
+- type `npm start` and you will see it is running on `http://localhost:8080/`
