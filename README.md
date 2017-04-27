@@ -1,12 +1,12 @@
 # React-Exercise
 
-####those are pre-set
+### those are pre-set
 - webpack 2
 - react & react dom
 - babel
 - scss
 
-##React Form Functionality:
+## React Form Functionality:
 
 1. create a react dropdown component that load data from ajax from 
 API https://api.myjson.com/bins/9fisb
@@ -22,7 +22,7 @@ API https://api.myjson.com/bins/9fisb
 6. more ? unmount everything?
 
 
-####Bonus:
+#### Bonus:
 - adding css3 to style as you like
 - adding more functions 
 - make it to responsive
