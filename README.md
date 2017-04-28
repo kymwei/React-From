@@ -1,10 +1,10 @@
 # React-Exercise
 
-### those are pre-set
-- webpack 2
-- react & react dom
-- babel
-- scss
+### These frameworks have been preloaded into this exercise
+- Webpack 2
+- React & React DOM
+- Babel
+- Scss
 
 ## React Form Functionality:
 
