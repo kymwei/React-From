@@ -8,7 +8,7 @@
 - Enzyme
 - Mocha
 
-## React Form Functionality:
+## React Form Functionality
 
 1. Hook up the dropdown list to populate with the list of makes from this API https://api.myjson.com/bins/9fisb
 2. When the dropdown changes, display the selection on the page. 
