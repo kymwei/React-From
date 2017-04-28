@@ -24,16 +24,5 @@
 - Design it so that the page is responsive (looks good on desktop, tablet, smartphone)
 - Add unit tests to what you've built out
 
-
-adding css3 to style as you like
-- adding more functions 
-- make it to responsive
-- do what ever you think very cool
-- if you still have time, adding test on your react compoment
-### Tip
-- conditional rendering
-- Using Lifecycle
-
-
-## to run the project
+## To run this project
 - type `npm start` and you will see it is running on `http://localhost:8080/`
