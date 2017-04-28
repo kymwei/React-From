@@ -1,4 +1,4 @@
-# React-Exercise
+# React Exercise
 
 ### These frameworks have been preloaded into this exercise
 - Webpack 2
@@ -8,10 +8,8 @@
 
 ## React Form Functionality:
 
-1. create a react dropdown component that load data from ajax from 
-API https://api.myjson.com/bins/9fisb
-
-2. when dropdown change, populate on the view of what make have been selected
+1.Hook up the dropdown list to populate with the list of makes from this API https://api.myjson.com/bins/9fisb
+2.When the dropdown changes, display the selection on the page. 
 
 3. each selected make have it own check box
 
