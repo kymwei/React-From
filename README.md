@@ -8,16 +8,13 @@
 
 ## React Form Functionality:
 
-1.Hook up the dropdown list to populate with the list of makes from this API https://api.myjson.com/bins/9fisb
-2.When the dropdown changes, display the selection on the page. 
-
-3. each selected make have it own check box
-
-4. bind event to delete button that allow user to delete selected checked selected make 
-
-5. add clear all button to clean all selection
-
-6. more ? unmount everything?
+1. Hook up the dropdown list to populate with the list of makes from this API https://api.myjson.com/bins/9fisb
+2. When the dropdown changes, display the selection on the page. 
+3. Each selected make should have a check box
+4. Bind an event to the delete button.
+5. The delete button should remove selected makes from the page.
+6. Add a clear all button that clears all the checkboxes on the page.
+7. More ? unmount everything?
 
 
 #### Bonus:
