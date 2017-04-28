@@ -5,6 +5,8 @@
 - React & React DOM
 - Babel
 - Scss
+- Enzyme
+- Mocha
 
 ## React Form Functionality:
 
@@ -17,8 +19,13 @@
 7. More ? unmount everything?
 
 
-#### Bonus:
-- adding css3 to style as you like
+#### Bonus Points:
+- Use css3 to style the page, make it look good!
+- Design it so that the page is responsive (looks good on desktop, tablet, smartphone)
+- Add unit tests to what you've built out
+
+
+adding css3 to style as you like
 - adding more functions 
 - make it to responsive
 - do what ever you think very cool
