@@ -28,3 +28,4 @@
 - type `npm start` and you will see it is running on `http://localhost:8080/`
 
 ![alt text](img/1.png "Description goes here")
+![alt text](img/2.png "Description goes here")
