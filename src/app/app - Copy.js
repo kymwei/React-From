@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import axios from "axios";
 require('../style/base.scss');
 //require('../style/base.css');
 
@@ -55,18 +54,18 @@ class MyOutputChange extends React.Component {
 
         return (
             <div className="text-left">
-                <h3><span className="selected-count">{this.props.makeList.length}</span> Selected Make</h3>
+                 <h3><span className="selected-count">{this.props.makeList.length}</span> Selected Make</h3>
                 <ul className="make-list">
-                    {
-                        this.props.makeList.length == 0
-                            ? 'no thing selected...'
-                            : this.props.makeList.map(item => (
+                {
+                    this.props.makeList.length == 0
+                        ? 'no thing selected...'
+                        : this.props.makeList.map(item => (
                             <li key={item.id} onChange={this._change.bind(this, item)}>
-                                <input type="checkbox"  value={item.id} />
-                                <span> {item.name}</span>
+                            <input type="checkbox"  value={item.id} />
+                             <span> {item.name}</span>
                             </li>
-                        ))
-                    }
+                    ))
+                }
                 </ul>
                 <button className="btn btn-secondary" href="#" onClick={this._clear.bind(this)}>Clear All</button>
                 <button className="btn btn-secondary" href="#" onClick={this._delete.bind(this, this.props.makeList)}>delete Selected</button>
@@ -84,17 +83,9 @@ class MakeModelDropdowns extends React.Component {
     }
 
     componentDidMount() {
-        // fetch(this.props.makeapi)
-        //     .then(response => response.json())
-        //     .then(json => this.setState({ data: json }));
-        let state = this;
-        axios.get(this.props.makeapi)
-            .then(function (response) {
-                state.setState({data: response.data})
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        fetch(this.props.makeapi)
+            .then(response => response.json())
+            .then(json => this.setState({ data: json }));
     }
 
     _changeHandler(event) {
@@ -103,8 +94,9 @@ class MakeModelDropdowns extends React.Component {
                 this.setState({showOutput: !!item.id});
                 const newList = this.state.list.concat([item]);
 
+                console.log(newList);
                 const uniqueList = newList.filter((val, id, array) => {
-                    console.log(val, id, array)
+                    debugger
                     return array.indexOf(val) == id;
                 });
                 //const uniqueNames = names.filter((val,id,array) => array.indexOf(val) == id);

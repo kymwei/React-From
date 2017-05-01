@@ -6,7 +6,7 @@ var debug = process.env.NODE_ENV !== "production";
 
 module.exports = {
     context: path.join(__dirname, "src"),
-    entry: './app/app.js',
+    entry: './app/index.js',
     devtool: debug ? "inline-sourcemap" : null,
     output: {
         filename: 'bundle.js',
@@ -33,8 +33,9 @@ module.exports = {
     },
     externals: {
         'cheerio': 'window',
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true,
+        'react/addons': 'react',
+        'react/lib/ExecutionEnvironment': 'react',
+        'react/lib/ReactContext': 'react'
     },
     plugins: debug ? [] : [
         new webpack.optimize.DedupePlugin(),
