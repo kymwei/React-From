@@ -103,11 +103,11 @@ class MakeModelDropdowns extends React.Component {
                 this.setState({showOutput: !!item.id});
                 const newList = this.state.list.concat([item]);
 
-                const uniqueList = newList.filter((val, id, array) => {
-                    console.log(val, id, array)
-                    return array.indexOf(val) == id;
-                });
-                //const uniqueNames = names.filter((val,id,array) => array.indexOf(val) == id);
+                // const uniqueList = newList.filter((val, id, array) => {
+                //     console.log(array.indexOf(val), id)
+                //     return array.indexOf(val) == id;
+                // });
+                const uniqueList = newList.filter((val,id,array) => array.indexOf(val) == id);
                 this.setState({list: uniqueList});
 
             }
