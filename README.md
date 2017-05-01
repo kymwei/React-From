@@ -26,3 +26,5 @@
 
 ## To run this project
 - type `npm start` and you will see it is running on `http://localhost:8080/`
+
+![alt text](img/1.png "Description goes here")
