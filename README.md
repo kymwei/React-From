@@ -27,5 +27,8 @@
 ## To run this project
 - type `npm start` and you will see it is running on `http://localhost:8080/`
 
+## To run unit test 
+- type `npm run test` to compile your test case
+
 ![alt text](img/1.png "Description goes here")
 ![alt text](img/2.PNG "Description goes here")

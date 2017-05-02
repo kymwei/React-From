@@ -5,10 +5,10 @@ require('../style/base.scss');
 //require('../style/base.css');
 
 
-const root = document.getElementById("root");
-
-
 class MySelectOptionsChange extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render () {
         return (
             <option value={this.props.data.id}>{this.props.data.name}</option>
